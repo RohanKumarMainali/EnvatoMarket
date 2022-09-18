@@ -25,5 +25,6 @@ urlpatterns = [
     path('create-testimonial/', views.create_testimonial, name='index'),
     path('update-testimonial/<int:pk>', views.update_testimonial, name='index'),
     path('delete-testimonial/<int:pk>', views.delete_testimonial, name='index'),
-
+    
+    path('blog/',views.blog)
 ]

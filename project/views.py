@@ -220,3 +220,13 @@ def delete_testimonial(request,pk):
     testimonial.delete()
 
     return Response("Day Details Deleted Successfully")
+
+#API for blog post
+
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))
+
+def blog(request):
+    blog=Blog.objects.all()
+    serializeObj=BlogSerializer(blog,many='true')
+    return Response(serializeObj.data)

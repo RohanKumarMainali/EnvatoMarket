@@ -11,10 +11,6 @@ class GradeChoice(models.Model):
     def __str__(self):
         return self.choice
 
-
-
-
-
 class Package(models.Model):
     name=models.CharField(max_length=150)
     slug = models.SlugField(max_length=200, unique=True,null=True)
@@ -32,8 +28,6 @@ class Package(models.Model):
     category=models.CharField(max_length=50,null=True)
     grade = models.ForeignKey(GradeChoice, on_delete=models.CASCADE,null=True)
     image=models.ImageField(_("image"),upload_to=upload_to )
-
-
 
     def __str__(self):
         return self.name
@@ -105,3 +99,12 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.author_name 
+
+class Blog(models.Model):
+    author_name = models.CharField(max_length=300,null=True)
+    title = models.CharField(max_length=500,null=True)
+    image = image=models.ImageField(_("image"),upload_to=upload_to,null=True)
+    description = RichTextField(blank=True,null=True)
+    posted_on = models.DateTimeField(auto_now_add=True, blank=True)
+
+    

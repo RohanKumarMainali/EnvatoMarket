@@ -27,7 +27,11 @@ admin.site.register(Package,AdminPackage)
 
 class AdminTestimonial(admin.ModelAdmin):
     list_display = ['author_name','description','image']
+
+class AdminBlog(admin.ModelAdmin):
+    list_display = ['author_name','title','image','posted_on']
 # admin.site.register(DayDetails)
 admin.site.register(Testimonial,AdminTestimonial)
 admin.site.register(GradeChoice)
+admin.site.register(Blog,AdminBlog)
 
