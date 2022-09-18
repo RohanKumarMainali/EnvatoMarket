@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from ckeditor.fields import RichTextField
 
 def upload_to(instance,fileName):
     return 'posts/{fileName}'.format(fileName=fileName)
@@ -18,7 +19,7 @@ class Package(models.Model):
     name=models.CharField(max_length=150)
     slug = models.SlugField(max_length=200, unique=True,null=True)
     days=models.IntegerField(null=True)
-    description=models.TextField(max_length=2500)
+    description=RichTextField(blank=True,null=True)
     departure_location = models.CharField(max_length=200,null=True)
     return_location = models.CharField(max_length=200,null=True)
     departure_time = models.CharField(max_length=300,null=True)
