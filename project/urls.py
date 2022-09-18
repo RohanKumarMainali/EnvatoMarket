@@ -16,10 +16,14 @@ urlpatterns = [
 
     # booking urls
     path('booking/', views.booking, name='index'),
-    path('booking/<int:pk>', views.single_booking, name='index'),
+    path('create-booking/', views.create_booking, name='index'),
     path('update-booking/<int:pk>', views.update_booking, name='index'),
     path('delete-booking/<int:pk>', views.delete_booking, name='index'),
 
-
+    # testimonial urls
+     path('testimonial/', views.testimonial, name='index'),
+    path('create-testimonial/', views.create_testimonial, name='index'),
+    path('update-testimonial/<int:pk>', views.update_testimonial, name='index'),
+    path('delete-testimonial/<int:pk>', views.delete_testimonial, name='index'),
 
 ]

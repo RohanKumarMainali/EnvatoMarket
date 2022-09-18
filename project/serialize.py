@@ -18,4 +18,10 @@ class BookingSerializer(serializers.ModelSerializer):
         model=Booking
         fields="__all__"
 
+class TestimonialSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(required=False)  
+    class Meta:
+        model=Package
+        fields="__all__"
+
 

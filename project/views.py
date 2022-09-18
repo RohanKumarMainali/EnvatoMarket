@@ -1,6 +1,6 @@
-from .models import Package,Booking,DayDetails
+from .models import *
 from  . import serialize
-from .serialize import PackageSerializer,BookingSerializer, DayDetailsSerializer
+from .serialize import *
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -169,6 +169,54 @@ def delete_booking(request,pk):
 
     return Response("Day Details Deleted Successfully")
 
+# API for testimonial
+
+#GET testimonial
 
 
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))
 
+def testimonial(request):
+    testimonial=Testimonial.objects.all()
+    serializeObj=TestimonialSerializer(testimonial,many='true')
+    return Response(serializeObj.data)
+
+#POST testimonial
+
+@api_view(['POST'])
+@permission_classes((permissions.AllowAny,))
+
+def create_testimonial(request):
+    serializeObj=TestimonialSerializer(data=request.data)
+    if serializeObj.is_valid():
+        serializeObj.save()
+    return Response(serializeObj.data)
+
+#UPDATE Testimonial
+
+
+@api_view(['PATCH'])
+@permission_classes((permissions.AllowAny,))
+
+def update_testimonial(request,pk):
+    testimonial=Testimonial.objects.get(id=pk)
+    serializeObj=TestimonialSerializer(instance=booking,data=request.data)
+    data={}
+    if serializeObj.is_valid():
+        serializeObj.save()
+        data["success"]="update succesfull!"
+        return Response(data=data)
+
+    return Response(serializeObj.errors)
+
+# Delete testimonial
+
+@api_view(['DELETE'])
+@permission_classes((permissions.AllowAny,))
+
+def delete_testimonial(request,pk):
+    testimonial=Testimonial.objects.get(id=pk)
+    testimonial.delete()
+
+    return Response("Day Details Deleted Successfully")
