@@ -12,6 +12,8 @@ class GradeChoice(models.Model):
 
 
 
+
+
 class Package(models.Model):
     name=models.CharField(max_length=150)
     slug = models.SlugField(max_length=200, unique=True,null=True)
@@ -34,7 +36,11 @@ class Package(models.Model):
 
     def __str__(self):
         return self.name
-# Create your models here.
+
+class ImageForGallery(models.Model):
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    image = models.ImageField(_("image"),upload_to=upload_to)
+
 
 class Booking(models.Model):
     name=models.CharField(max_length=150)
@@ -48,7 +54,8 @@ class Booking(models.Model):
     def __str__(self):
         return self.name
 
-
+class DayChoice(models.Model):
+    day = models.CharField(max_length=200)
 
 CHOICES =(
     (1, "One"),
@@ -84,7 +91,7 @@ CHOICES =(
 )
 class DayDetails(models.Model):
     package = models.ForeignKey(Package, on_delete=models.CASCADE)
-    day = models.IntegerField(choices=CHOICES, default=1,max_length=50)
+    day = models.IntegerField(choices=CHOICES, default=1)
     title = models.CharField(max_length=500,null=True)
     description = models.TextField(max_length=5000,null=True)
 
