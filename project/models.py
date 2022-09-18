@@ -48,8 +48,7 @@ class Booking(models.Model):
     def __str__(self):
         return self.name
 
-class DayChoice(models.Model):
-    day = models.CharField(max_length=200)
+
 
 CHOICES =(
     (1, "One"),
@@ -85,7 +84,7 @@ CHOICES =(
 )
 class DayDetails(models.Model):
     package = models.ForeignKey(Package, on_delete=models.CASCADE)
-    day = models.IntegerField(choices=CHOICES, default=1)
+    day = models.IntegerField(choices=CHOICES, default=1,max_length=50)
     title = models.CharField(max_length=500,null=True)
     description = models.TextField(max_length=5000,null=True)
 
