@@ -1,11 +1,6 @@
 from django.contrib import admin
 from .models import *
 
-# @admin.register(Post)
-# class PostAdmin(admin.ModelAdmin):
-#     class Media:
-#         js= ('../...tinyInject.js',)
-
 class AdminDaysInline(admin.StackedInline):
     # list_display = ('package', 'day', 'title','description')
     model = DayDetails
@@ -30,8 +25,17 @@ class AdminTestimonial(admin.ModelAdmin):
 
 class AdminBlog(admin.ModelAdmin):
     list_display = ['author_name','title','image','posted_on']
+
+# class AdminSubCategoryInline(admin.StackedInline):
+#     model= SubCategory
+#     extra=0
+# class AdminCategory(admin.ModelAdmin):
+#     inlines=[AdminSubCategoryInline]
+
 # admin.site.register(DayDetails)
 admin.site.register(Testimonial,AdminTestimonial)
 admin.site.register(GradeChoice)
 admin.site.register(Blog,AdminBlog)
+admin.site.register(Category)
+
 

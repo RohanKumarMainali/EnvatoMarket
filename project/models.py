@@ -11,6 +11,19 @@ class GradeChoice(models.Model):
     def __str__(self):
         return self.choice
 
+class Category(models.Model):
+    category = models.CharField(max_length=200,null=True)
+    
+    def __str__(self):
+        return self.category
+
+# class SubCategory(models.Model):
+#     category=models.ForeignKey(Category, on_delete = models.CASCADE,null=True)
+#     sub_category = models.CharField(max_length=150,null=True)
+#     def __str__(self):
+#         return self.sub_category
+
+
 class Package(models.Model):
     name=models.CharField(max_length=150)
     slug = models.SlugField(max_length=200, unique=True,null=True)
@@ -25,7 +38,8 @@ class Package(models.Model):
     package_excluded = models.TextField(max_length=200,null=True)
     max_altitude = models.IntegerField(null=True)
     seat=models.IntegerField(null=True)
-    category=models.CharField(max_length=50,null=True)
+    category=models.ForeignKey(Category, on_delete=models.CASCADE,null=True)
+    # subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE,null=True)
     grade = models.ForeignKey(GradeChoice, on_delete=models.CASCADE,null=True)
     image=models.ImageField(_("image"),upload_to=upload_to )
 
