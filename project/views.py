@@ -24,7 +24,7 @@ def package_list(request):
 @permission_classes((permissions.AllowAny,))
 
 def package(request,pk):
-    package=Package.objects.filter(id=pk)
+    package=Package.objects.filter(name=pk)
     serializeObj=PackageSerializer(package,many='true')
     return Response(serializeObj.data)
 

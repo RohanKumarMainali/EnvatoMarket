@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Package,DayDetails,Booking,Blog
+from .models import *
 
 
 class PackageSerializer(serializers.ModelSerializer):
@@ -21,7 +21,7 @@ class BookingSerializer(serializers.ModelSerializer):
 class TestimonialSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)  
     class Meta:
-        model=Package
+        model=Testimonial
         fields="__all__"
 
 class BlogSerializer(serializers.ModelSerializer):
