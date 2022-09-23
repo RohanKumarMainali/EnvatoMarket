@@ -25,7 +25,7 @@ class Category(models.Model):
 
 
 class Package(models.Model):
-    name=models.CharField(max_length=150)
+    name=models.CharField(max_length=150 , unique=True)
     slug = models.SlugField(max_length=200, unique=True,null=True)
     days=models.IntegerField(null=True)
     description=RichTextField(blank=True,null=True)
