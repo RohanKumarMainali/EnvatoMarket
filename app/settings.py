@@ -89,12 +89,12 @@ ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'envato',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '0MDymioQsV004o9pQDmu',
+        'HOST': 'containers-us-west-67.railway.app',
+        'PORT': '7594',
     }
 }
 
