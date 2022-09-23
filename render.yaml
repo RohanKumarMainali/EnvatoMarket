@@ -10,7 +10,7 @@ services:
     buildCommand: "./build.sh"
     startCommand: "gunicorn app.wsgi:application"
     envVars:
-      - key: DATABASE_URL
+      - key: postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}
         fromDatabase:
           name: app
           property: connectionString
