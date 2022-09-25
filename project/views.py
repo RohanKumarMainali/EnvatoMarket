@@ -82,9 +82,9 @@ def day_details(request):
 
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
-def package_day_details(request,package_name):
-    day_details=Package.objects.filter(name=package_name)
-    serializeObj=PackageSerializer(day_details,many='true')
+def package_day_details(request,_id):
+    day_details=DayDetails.objects.filter(id=_id)
+    serializeObj=DayDetailsSerializer(day_details,many='true')
     return Response(serializeObj.data)
 
 @api_view(['POST'])
