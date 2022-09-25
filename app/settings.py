@@ -90,11 +90,11 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '0MDymioQsV004o9pQDmu',
-        'HOST': 'containers-us-west-67.railway.app',
-        'PORT': '7594',
+        'NAME': 'dtravel',
+        'USER': 'dtravel',
+        'PASSWORD': 'F7AnJrcu3ZVWutkfn3b1KKeN8EgqEykT',
+        'HOST': 'singapore-postgres.render.com',
+        'PORT': '5432',
     }
 }
 

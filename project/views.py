@@ -72,13 +72,20 @@ def day_details(request):
     serializeObj=DayDetailsSerializer(day,many='true')
     return Response(serializeObj.data)
 
+
+
+
+
 # Single package day details
-# @api_view(['GET'])
-# @permission_classes((permissions.AllowAny,))
-# def package_day_details(request,package_name):
-#     day_details=Package.objects.filter(name=package_name)
-#     serializeObj=DayDetailsSerializer(package,many='true')
-#     return Response(serializeObj.data)
+
+
+
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))
+def package_day_details(request,package_name):
+    day_details=Package.objects.filter(name=package_name)
+    serializeObj=PackageSerializer(day_details,many='true')
+    return Response(serializeObj.data)
 
 @api_view(['POST'])
 @permission_classes((permissions.AllowAny,))
