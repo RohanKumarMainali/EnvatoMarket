@@ -4,10 +4,13 @@ from .models import *
 
 class PackageSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)  #image is not always required because we don't wanna
-                                                  #update image every single time on updating some other data
+    category = serializers.StringRelatedField()
     class Meta:
         model=Package
         fields="__all__"
+    def get_category_name(self, category):
+        return category.name
+
 class DayDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model=DayDetails

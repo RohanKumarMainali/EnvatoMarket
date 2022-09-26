@@ -7,8 +7,8 @@ services:
   - type: web
     name: app
     env: python
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn app.wsgi:application"
+    buildCommand: './build.sh'
+    startCommand: 'gunicorn app.wsgi:application'
     envVars:
       - key: postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}
         fromDatabase:
