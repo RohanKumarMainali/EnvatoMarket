@@ -74,8 +74,6 @@ def day_details(request):
 
 
 
-
-
 # Single package day details
 
 
@@ -83,7 +81,7 @@ def day_details(request):
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
 def package_day_details(request,_id):
-    day_details=DayDetails.objects.filter(id=_id)
+    day_details=DayDetails.objects.filter(package=_id)
     serializeObj=DayDetailsSerializer(day_details,many='true')
     return Response(serializeObj.data)
 
@@ -120,6 +118,22 @@ def delete_day_details(request,pk):
     day.delete()
 
     return Response("Day Details Deleted Successfully")
+
+
+    # ----------------------------------------------------------------
+
+# API for FAQs
+
+# Single FAQ
+
+
+
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))
+def package_FAQ(request,_id):
+    FAQs=FAQ.objects.filter(package=_id)
+    serializeObj=FAQSerializer(FAQs,many='true')
+    return Response(serializeObj.data)
 
 
 #API for booking

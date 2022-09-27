@@ -9,6 +9,11 @@ class ImageGalleryInline(admin.StackedInline):
     model= ImageForGallery
     extra=0
 
+class AdminFAQInline(admin.StackedInline):
+    # list_display = ('package', 'day', 'title','description')
+    model = FAQ
+    extra = 1
+
 
 class AdminBooking(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone_number','check_out','number_of_people','enquiry')
@@ -17,7 +22,7 @@ admin.site.register(Booking, AdminBooking)
 # Register your models here.
 class AdminPackage(admin.ModelAdmin):
     list_display=('name','days','price','seat','category')
-    inlines = [AdminDaysInline,ImageGalleryInline]
+    inlines = [AdminDaysInline,ImageGalleryInline,AdminFAQInline]
 admin.site.register(Package,AdminPackage)
 
 class AdminTestimonial(admin.ModelAdmin):

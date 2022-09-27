@@ -28,7 +28,7 @@ class Package(models.Model):
     name=models.CharField(max_length=150 , unique=True)
     slug = models.SlugField(max_length=200, unique=True,null=True)
     days=models.IntegerField(null=True)
-    description=RichTextField(blank=True,null=True)
+    description=RichTextField(null=True)
     departure_location = models.CharField(max_length=200,null=True)
     return_location = models.CharField(max_length=200,null=True)
     departure_time = models.CharField(max_length=300,null=True)
@@ -42,6 +42,7 @@ class Package(models.Model):
     # subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE,null=True)
     grade = models.ForeignKey(GradeChoice, on_delete=models.CASCADE,null=True)
     image=models.ImageField(_("image"),upload_to=upload_to )
+    additional_information = RichTextField(blank=True, null=True, )
 
     def __str__(self):
         return self.name
@@ -104,6 +105,12 @@ class DayDetails(models.Model):
     title = models.CharField(max_length=500,null=True)
     description = models.TextField(max_length=5000,null=True)
 
+class FAQ(models.Model):
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    question = models.CharField(max_length=2500, null=True)
+    answer = models.TextField(max_length=8000,null=True)
+
+
   
 
 class Testimonial(models.Model):
@@ -117,6 +124,7 @@ class Testimonial(models.Model):
 class Blog(models.Model):
     author_name = models.CharField(max_length=300,null=True)
     title = models.CharField(max_length=500,null=True)
+    slug = models.CharField(max_length=200,null=True)
     image = image=models.ImageField(_("image"),upload_to=upload_to,null=True)
     description = RichTextField(blank=True,null=True)
     posted_on = models.DateTimeField(auto_now_add=True, blank=True)

@@ -14,6 +14,10 @@ urlpatterns = [
     path('update-day-details/<int:pk>', views.update_day_details, name='index'),
     path('delete-day-details/<int:pk>',views.delete_day_details),
 
+    #  FAQ
+    path('FAQ/<int:_id>', views.package_FAQ),
+
+
     # booking urls
     path('booking/', views.booking, name='index'),
     path('create-booking/', views.create_booking, name='index'),
